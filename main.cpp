@@ -6,15 +6,7 @@
 /// function to get text for testing main
 std::string get_text(const int argc) noexcept
 {
-  // return text based on argc
-  if (argc == 1)
-  {
-    return "no args";
-  }
-  else
-  {
-    return "some args";
-  }
+  return argc == 1? "no args" : "some args";
 }
 
 /// function to test main
