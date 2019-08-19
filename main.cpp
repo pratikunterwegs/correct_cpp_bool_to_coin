@@ -4,12 +4,6 @@
 #include <cassert>
 #include <vector>
 
-/// function to get text for testing main
-std::string get_text(const int argc) noexcept
-{
-    return argc == 1? "no args" : "some args";
-}
-
 /// function to test main
 int do_main(std::vector<std::string> cliArgs) noexcept
 {
@@ -40,11 +34,11 @@ int main(int argc, char* argv[])
     std::vector<std::string> cliArgs(argv, argv + argc);
 
     // check that some args and no args cases are different
-    assert(do_main({"1"}) != do_main({"2"}));
-    assert(do_main({"true", "true"}) == 1);
-    assert(do_main({"blabla"}) == 1);
-    assert(do_main({"true"}) == 0);
-    assert(do_main({"false"}) == 0);
+    assert(do_main({"main", "1"}) != do_main({"2"}));
+    assert(do_main({"main","true", "true"}) == 1);
+    assert(do_main({"main","blabla"}) == 1);
+    assert(do_main({"main","true"}) == 0);
+    assert(do_main({"main","false"}) == 0);
 
     return do_main(cliArgs);
 }
