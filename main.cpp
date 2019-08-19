@@ -34,11 +34,11 @@ int main(int argc, char* argv[])
     std::vector<std::string> cliArgs(argv, argv + argc);
 
     // check that some args and no args cases are different
-    assert(do_main({cliArgs[0], "1"}) != do_main({cliArgs[0], "2"}));
-    assert(do_main({cliArgs[0],"true", "true"}) == 1);
-    assert(do_main({cliArgs[0],"blabla"}) == 1);
-    assert(do_main({cliArgs[0],"true"}) == 0);
-    assert(do_main({cliArgs[0],"false"}) == 0);
+    assert(do_main({"bool_to_coin", "1"}) != do_main({"bool_to_coin", "2"}));
+    assert(do_main({"bool_to_coin","true", "true"}) == 1);
+    assert(do_main({"bool_to_coin","blabla"}) == 1);
+    assert(do_main({"bool_to_coin","true"}) == 0);
+    assert(do_main({"bool_to_coin","false"}) == 0);
 
     return do_main(cliArgs);
 }
