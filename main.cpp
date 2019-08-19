@@ -25,7 +25,8 @@ int main(int argc, char* argv[])
 
     if (argc != 2)
     {
-        return 1;
+        std::cerr << "too few or too many args";
+        exit(EXIT_FAILURE);
     }
     if (std::string(argv[1]) == "true")
     {
@@ -35,9 +36,8 @@ int main(int argc, char* argv[])
     {
         std::cout << "tails\n";
     }
-    else
-    {
-        return 1;
+    else {
+        exit(EXIT_FAILURE);
     }
     return 0;
 }
