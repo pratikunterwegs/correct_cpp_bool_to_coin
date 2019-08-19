@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <cassert>
+#include <vector>
 
 /// function to get text for testing main
 std::string get_text(const int argc) noexcept
@@ -10,32 +11,40 @@ std::string get_text(const int argc) noexcept
 }
 
 /// function to test main
-int do_main(const int argc) noexcept
+int do_main(std::vector<std::string> cliArgs) noexcept
 {
-    // print output text based on argc
-    std::cout << get_text(argc) << '\n';
+    // do whatever
+    if (cliArgs.size() != 2)
+    {
+        std::cerr << "too few or too many args";
+        exit(EXIT_FAILURE);
+    }
+    if (std::string(cliArgs[1]) == "true")
+    {
+        std::cout << "heads\n";
+    } else if (std::string(cliArgs[1]) == "false")
+    {
+        std::cout << "tails\n";
+    } else {
+        std::cerr << "nonsense args";
+        exit(EXIT_FAILURE);
+    }
+
     return 0;
 }
 
 /// main function
 int main(int argc, char* argv[]) 
 {
-    // check that some args and no args cases are different
-    assert(get_text(1) != get_text(2));
+    // convert argv to string
+    std::vector<std::string> cliArgs(argv, argv + argc);
 
-    if (argc != 2)
-    {
-        std::cerr << "too few or too many args";
-        exit(EXIT_FAILURE);
-    }
-    if (std::string(argv[1]) == "true")
-    {
-        std::cout << "heads\n";
-    } else if (std::string(argv[1]) == "false")
-    {
-        std::cout << "tails\n";
-    } else {
-        exit(EXIT_FAILURE);
-    }
-    return do_main(argc);
+    // check that some args and no args cases are different
+    assert(do_main({"1"}) != do_main({"2"}));
+    assert(do_main({"true", "true"}) == 1);
+    assert(do_main({"blabla"}) == 1);
+    assert(do_main({"true"}) == 0);
+    assert(do_main({"false"}) == 0);
+
+    return do_main(cliArgs);
 }
