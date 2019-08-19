@@ -8,11 +8,12 @@
 int do_main(std::vector<std::string> cliArgs) noexcept
 {
     // do whatever
-    if (cliArgs.size() != 2)
+/*    if (cliArgs.size() != 2)
     {
         std::cerr << "too few or too many args";
         exit(EXIT_FAILURE);
     }
+    */
     if (std::string(cliArgs[1]) == "true")
     {
         std::cout << "heads\n";
