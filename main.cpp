@@ -6,15 +6,15 @@
 /// function to get text for testing main
 std::string get_text(const int argc) noexcept
 {
-  return argc == 1? "no args" : "some args";
+    return argc == 1? "no args" : "some args";
 }
 
 /// function to test main
 int do_main(const int argc) noexcept
 {
-  // print output text based on argc
-  std::cout << get_text(argc) << '\n';
-  return 0;
+    // print output text based on argc
+    std::cout << get_text(argc) << '\n';
+    return 0;
 }
 
 /// main function
@@ -31,13 +31,11 @@ int main(int argc, char* argv[])
     if (std::string(argv[1]) == "true")
     {
         std::cout << "heads\n";
-    }
-    else if (std::string(argv[1]) == "false")
+    } else if (std::string(argv[1]) == "false")
     {
         std::cout << "tails\n";
-    }
-    else {
+    } else {
         exit(EXIT_FAILURE);
     }
-    return 0;
+    return do_main(argc);
 }
